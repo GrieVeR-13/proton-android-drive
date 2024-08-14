@@ -26,4 +26,9 @@ android {
 dependencies {
     implementation(libs.androidxCore.coreKtx)
     implementation(libs.orgJetbrainsKotlinx.kotlinxSerializationJson)
+
+    api(project(":proton-android-drive-base-data"))
+//    api(project(":drive:share:domain"))
+//    implementation(libs.retrofit)
+//    implementation(libs.androidx.dataStore.preferences)
 }

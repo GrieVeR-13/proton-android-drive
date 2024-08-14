@@ -1,41 +1,41 @@
-/*
- * Copyright (c) 2021-2023 Proton AG.
- * This file is part of Proton Core.
- *
- * Proton Core is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * Proton Core is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with Proton Core.  If not, see <https://www.gnu.org/licenses/>.
- */
+import Presentation_android_common_gradle.FlavorsConfiguratorPlugin.configureFlavors
+
 plugins {
-    id("com.android.library")
+    id(libs.plugins.comAndroidLibrary)
+    id(libs.plugins.kotlinAndroid)
+    kotlin(libs.plugins.pluginSerialization)
 }
+
+configureFlavors()
 
 android {
+    compileSdk = Tools.Android.compileSdkVersion
     namespace = "me.proton.core.drive.base.data"
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
+    }
+
+    defaultConfig {
+        minSdk = Tools.Android.minSdkVersion
+        consumerProguardFiles("proguard-rules.pro")
+    }
 }
 
-driveModule(
-    hilt = true,
-    workManager = true,
-    serialization = true,
-    i18n = true,
-) {
-    api(project(":drive:base:domain"))
-    api(libs.core.account.data)
-    api(libs.core.data)
-    api(libs.core.network.data)
-    implementation(libs.androidx.dataStore.core)
-    implementation(libs.androidx.dataStore.preferences)
-    implementation(libs.androidx.exif)
-    implementation(libs.androidx.paging.common)
-    implementation(libs.retrofit)
+dependencies {
+    implementation(libs.androidxCore.coreKtx)
+    implementation(libs.orgJetbrainsKotlinx.kotlinxSerializationJson)
+
+    api(project(":proton-android-drive-base-domain"))
+    api("me.proton.core:account-data:25.2.1")
+    api("me.proton.core:data:25.2.1")
+    api("me.proton.core:network-data:25.2.1")
+    implementation("androidx.datastore:datastore:1.0.0")
+    implementation("androidx.datastore:datastore-preferences:1.0.0")
+    implementation("androidx.exifinterface:exifinterface:1.3.6")
+    implementation("com.google.dagger:hilt-android:2.44")
+//    implementation(libs.androidx.paging.common)
+//    implementation(libs.retrofit)
+
 }

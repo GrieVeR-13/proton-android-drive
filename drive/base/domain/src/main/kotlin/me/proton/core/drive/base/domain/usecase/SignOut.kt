@@ -14,7 +14,8 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with Proton Core.  If not, see <https://www.gnu.org/licenses/>.
- */
+ *//*
+
 package me.proton.core.drive.base.domain.usecase
 
 import me.proton.core.accountmanager.domain.AccountManager
@@ -28,3 +29,4 @@ class SignOut @Inject constructor(
         accountManager.removeAccount(userId)
     }
 }
+*/

@@ -14,7 +14,8 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with Proton Core.  If not, see <https://www.gnu.org/licenses/>.
- */
+ *//*
+
 
 package me.proton.core.drive.base.data.db.paging
 
@@ -42,13 +43,15 @@ import me.proton.core.util.kotlin.CoreLogger
 import kotlin.coroutines.CoroutineContext
 import kotlin.math.ceil
 
+*/
 /**
  * When using Room's [PagingSource] implementation, if the tables listened on are being updated
  * constantly, this leads to a storm of `PagingSource.invalidate()` which blocks the refresh and
  * makes it look like the loading takes a lot of time. Using this, we only invalidate when the data
  * we are observing changes. This solution is great for lists which are not too big and on which
  * paging from the database doesn't really matter.
- */
+ *//*
+
 fun <T : Any> Flow<Result<List<T>>>.asPagingSource(
     stopOnFailure: Boolean = true,
     processPage: (suspend (List<T>) -> List<T>)? = null,
@@ -260,3 +263,4 @@ private val PagingSource.LoadParams<Int>.type: String get() = when(this) {
     is PagingSource.LoadParams.Append -> "APPEND"
     is PagingSource.LoadParams.Prepend -> "PREPEND"
 }
+*/
