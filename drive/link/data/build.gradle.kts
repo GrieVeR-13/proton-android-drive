@@ -1,3 +1,5 @@
+import Proton_android_drive_gradle.ProtonAndroidDrive.driveModule
+
 /*
  * Copyright (c) 2021-2024 Proton AG.
  * This file is part of Proton Core.
@@ -18,8 +20,9 @@
 
 plugins {
     id("com.android.library")
-    kotlin("android")
-    kotlin("kapt")
+    kotlin(libs.plugins.pluginSerialization)
+//    kotlin("android")
+//    kotlin("kapt")
 }
 
 android {
@@ -32,11 +35,11 @@ driveModule(
     socialTest = true,
     room = true,
 ) {
-    api(project(":drive:base:data"))
-    api(project(":drive:link:domain"))
-    implementation(project(":drive:share:data"))
+    api(project(":proton-android-drive-base-data"))
+    api(project(":proton-android-drive-link-domain"))
+    implementation(project(":proton-android-drive-share-data"))
     implementation(libs.retrofit)
-    androidTestImplementation(project(":drive:db"))
-    kaptAndroidTest(libs.androidx.room.compiler)
-    testImplementation(project(":drive:db-test"))
+//    androidTestImplementation(project(":drive:db"))
+//    kaptAndroidTest(libs.androidx.room.compiler)
+//    testImplementation(project(":drive:db-test"))
 }

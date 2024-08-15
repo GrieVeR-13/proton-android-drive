@@ -1,3 +1,5 @@
+import Proton_android_drive_gradle.ProtonAndroidDrive.driveModule
+
 /*
  * Copyright (c) 2021-2024 Proton AG.
  * This file is part of Proton Core.
@@ -17,7 +19,8 @@
  */
 
 plugins {
-    id("com.android.library")
+    id(libs.plugins.comAndroidLibrary)
+    kotlin(libs.plugins.pluginSerialization)
 }
 
 android {
@@ -29,5 +32,5 @@ driveModule(
     serialization = true,
     socialTest = true,
 ) {
-    api(project(":drive:volume:domain"))
+    api(project(":proton-android-drive-volume-domain"))
 }

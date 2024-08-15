@@ -72,7 +72,7 @@ class MetadataRetrieverVideoAttributesProvider @Inject constructor(
                     )
                 }
             } catch (e: Exception) {
-                e.log(LogTag.MEDIA, "MediaMetadataRetriever failed to get resolution and duration")
+//                e.log(LogTag.MEDIA, "MediaMetadataRetriever failed to get resolution and duration")
                 null
             }
         }

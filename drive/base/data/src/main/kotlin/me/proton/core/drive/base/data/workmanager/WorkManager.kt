@@ -14,7 +14,8 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with Proton Core.  If not, see <https://www.gnu.org/licenses/>.
- */
+ *//*
+
 
 package me.proton.core.drive.base.data.workmanager
 
@@ -44,3 +45,4 @@ inline fun <T> Throwable.onProtonHttpException(block: (protonCode: Int) -> T): T
     ((this as? ApiException)?.error as? ApiResult.Error.Http)?.proton?.code?.let { protonCode ->
         block(protonCode)
     }
+*/

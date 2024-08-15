@@ -14,7 +14,8 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with Proton Core.  If not, see <https://www.gnu.org/licenses/>.
- */
+ *//*
+
 package me.proton.core.drive.base.data.di
 
 import dagger.Binds
@@ -69,3 +70,4 @@ interface BaseBindModule {
     @Singleton
     fun bindsDeviceInfoImpl(impl: DeviceInfoImpl): DeviceInfo
 }
+*/

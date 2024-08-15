@@ -1,41 +1,44 @@
-import Presentation_android_common_gradle.FlavorsConfiguratorPlugin.configureFlavors
+import Proton_android_drive_gradle.ProtonAndroidDrive.driveModule
 
+/*
+ * Copyright (c) 2021-2023 Proton AG.
+ * This file is part of Proton Core.
+ *
+ * Proton Core is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * Proton Core is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Proton Core.  If not, see <https://www.gnu.org/licenses/>.
+ */
 plugins {
     id(libs.plugins.comAndroidLibrary)
-    id(libs.plugins.kotlinAndroid)
     kotlin(libs.plugins.pluginSerialization)
 }
 
-configureFlavors()
-
 android {
-    compileSdk = Tools.Android.compileSdkVersion
     namespace = "me.proton.core.drive.base.domain"
-
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
-    }
-
-    defaultConfig {
-        minSdk = Tools.Android.minSdkVersion
-        consumerProguardFiles("proguard-rules.pro")
-    }
 }
 
-dependencies {
-    implementation(libs.androidxCore.coreKtx)
-    implementation(libs.orgJetbrainsKotlinx.kotlinxSerializationJson)
-
+driveModule(
+    hilt = true,
+    serialization = true,
+) {
 //    api(project(":drive:message-queue:domain"))
-    api("me.proton.core:crypto-common:25.2.1")
-    api("me.proton.core:domain:25.2.1")
-    api("me.proton.core:user-domain:25.2.1")
-    implementation("com.google.dagger:hilt-android:2.44")
+    api(libs.core.cryptoCommon)
+    api(libs.core.domain)
+    api(libs.core.user.domain)
 
-//    implementation(libs.core.accountManager.domain)
-//    implementation(libs.core.data)
-//    implementation(libs.core.key.domain)
-//    implementation(libs.core.network.domain)
-
+    implementation(libs.core.accountManager.domain)
+    implementation(libs.core.data)
+    implementation(libs.core.key.domain)
+    implementation(libs.core.network.domain)
 }
+
+//configureJacoco()
