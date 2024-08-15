@@ -1,3 +1,5 @@
+import Proton_android_drive_gradle.ProtonAndroidDrive.driveModule
+
 /*
  * Copyright (c) 2021-2024 Proton AG.
  * This file is part of Proton Core.
@@ -24,11 +26,11 @@ android {
 }
 
 driveModule(hilt = true) {
-    api(project(":drive:base:domain"))
+    api(project(":proton-android-drive-base-domain"))
     api(libs.core.auth.domain)
     api(libs.core.cryptoCommon)
     api(libs.core.key.domain)
 
-    androidTestImplementation(libs.core.crypto.android)
-    androidTestImplementation(files("${rootDir.relativeTo(projectDir)}/../proton-libs/gopenpgp/gopenpgp.aar"))
+//    androidTestImplementation(libs.core.crypto.android)
+//    androidTestImplementation(files("${rootDir.relativeTo(projectDir)}/../proton-libs/gopenpgp/gopenpgp.aar"))
 }

@@ -1,3 +1,5 @@
+import Proton_android_drive_gradle.ProtonAndroidDrive.driveModule
+
 /*
  * Copyright (c) 2021-2023 Proton AG.
  * This file is part of Proton Core.
@@ -24,12 +26,12 @@ android {
 }
 
 driveModule(hilt = true) {
-    api(project(":drive:file:base:domain"))
-    api(project(":drive:folder:domain"))
-    api(project(":drive:key:domain"))
-    api(project(":drive:photo:domain"))
-    api(project(":drive:share-url:base:domain"))
-    api(project(":drive:volume:domain"))
+    api(project(":proton-android-drive-file-base-domain"))
+    api(project(":proton-android-drive-folder-domain"))
+    api(project(":proton-android-drive-key-domain"))
+//    api(project(":proton-android-drive-photo-domain"))
+    api(project(":proton-android-drive-share-url-base:domain"))
+    api(project(":proton-android-drive-volume-domain"))
 
-    implementation(project(":drive:crypto-base:domain"))
+    implementation(project(":proton-android-drive-crypto-base-domain"))
 }
