@@ -1,3 +1,5 @@
+import Proton_android_drive_gradle.ProtonAndroidDrive.driveModule
+
 /*
  * Copyright (c) 2021-2023 Proton AG.
  * This file is part of Proton Core.
@@ -28,13 +30,13 @@ driveModule(
     i18n = true,
     room = true,
 ) {
-    api(project(":drive:link:data"))
-    api(project(":drive:link-download:data"))
-    api(project(":drive:link-offline:data"))
-    api(project(":drive:link-trash:data"))
-    api(project(":drive:link-selection:data"))
-    api(project(":drive:drivelink:domain"))
-    api(project(":drive:share-user:data"))
+    api(project(":drive-link-data"))
+//    api(project(":drive-link-download-data"))
+//    api(project(":drive-link-offline-data"))
+//    api(project(":drive-link-trash-data"))
+//    api(project(":drive-link-selection-data"))
+    api(project(":drive-drivelink-domain"))
+//    api(project(":drive-share-user-data"))
 
-    testImplementation(project(":drive:db-test"))
+//    testImplementation(project(":drive:db-test"))
 }

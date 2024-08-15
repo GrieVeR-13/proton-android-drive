@@ -1,3 +1,5 @@
+import Proton_android_drive_gradle.ProtonAndroidDrive.driveModule
+
 /*
  * Copyright (c) 2021-2024 Proton AG.
  * This file is part of Proton Core.
@@ -28,8 +30,8 @@ driveModule(
     room = true,
     workManager = true,
 ) {
-    api(project(":drive:base:data"))
-    api(project(":drive:feature-flag:domain"))
+    api(project(":drive-base-data"))
+    api(project(":drive-feature-flag-domain"))
     implementation(libs.core.featureFlag.data)
     implementation(libs.core.presentation)
 }

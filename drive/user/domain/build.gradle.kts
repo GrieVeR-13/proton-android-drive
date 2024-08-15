@@ -1,3 +1,5 @@
+import Proton_android_drive_gradle.ProtonAndroidDrive.driveModule
+
 /*
  * Copyright (c) 2021-2023 Proton AG.
  * This file is part of Proton Core.
@@ -25,9 +27,9 @@ android {
 }
 
 driveModule(hilt = true) {
-    api(project(":drive:base:domain"))
+    api(project(":drive-base-domain"))
 
-    testImplementation(project(":drive:db-test"))
-    testImplementation(project(":drive:user:data"))
-    testImplementation(libs.core.user.data)
+//    testImplementation(project(":drive:db-test"))
+//    testImplementation(project(":drive:user:data"))
+//    testImplementation(libs.core.user.data)
 }

@@ -28,7 +28,7 @@ android {
 driveModule(hilt = true) {
     api(project(":drive-drivelink-domain"))
 
-    implementation(project(":drive:crypto:domain"))
-    implementation(project(":drive:crypto-base:domain"))
-    implementation(project(":drive:thumbnail:domain"))
+    implementation(project(":drive-crypto-domain"))
+    implementation(project(":drive-crypto-base-domain"))
+//    implementation(project(":drive-thumbnail-domain"))
 }

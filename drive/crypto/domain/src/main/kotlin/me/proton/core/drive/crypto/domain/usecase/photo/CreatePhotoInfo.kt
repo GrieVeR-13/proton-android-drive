@@ -14,7 +14,8 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with Proton Core.  If not, see <https://www.gnu.org/licenses/>.
- */
+ *//*
+
 
 package me.proton.core.drive.crypto.domain.usecase.photo
 
@@ -75,3 +76,4 @@ class CreatePhotoInfo @Inject constructor(
             shareKey to generateNodeKey(userId, shareKey, getSignatureAddress(userId, addressId)).getOrThrow()
         }
 }
+*/

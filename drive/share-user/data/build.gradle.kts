@@ -1,3 +1,5 @@
+import Proton_android_drive_gradle.ProtonAndroidDrive.driveModule
+
 /*
  * Copyright (c) 2021-2024 Proton AG.
  * This file is part of Proton Core.
@@ -18,6 +20,7 @@
 
 plugins {
     id("com.android.library")
+    kotlin(libs.plugins.pluginSerialization)
 }
 
 android {
@@ -31,11 +34,11 @@ driveModule(
     socialTest = true,
     room = true,
 ) {
-    api(project(":drive:share:data"))
-    api(project(":drive:share-user:domain"))
-    api(project(":drive:user:domain"))
-    api(project(":drive:volume:data"))
-    api(libs.androidx.room.paging)
-    implementation(project(":drive:link:data"))
+    api(project(":drive-share-data"))
+    api(project(":drive-share-user-domain"))
+    api(project(":drive-user-domain"))
+    api(project(":drive-volume-data"))
+//    api(libs.androidx.room.paging)
+    implementation(project(":drive-link-data"))
     implementation(libs.retrofit)
 }

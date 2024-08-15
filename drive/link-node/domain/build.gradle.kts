@@ -1,3 +1,5 @@
+import Proton_android_drive_gradle.ProtonAndroidDrive.driveModule
+
 /*
  * Copyright (c) 2021-2023 Proton AG.
  * This file is part of Proton Core.
@@ -25,7 +27,7 @@ android {
 }
 
 driveModule(hilt = true) {
-    api(project(":drive:link:domain"))
+    api(project(":drive-link-domain"))
 }
 
-configureJacoco()
+//configureJacoco()
