@@ -35,9 +35,9 @@ driveModule(
     socialTest = true,
     room = true,
 ) {
-    api(project(":proton-android-drive-base-data"))
-    api(project(":proton-android-drive-link-domain"))
-    implementation(project(":proton-android-drive-share-data"))
+    api(project(":drive-base-data"))
+    api(project(":drive-link-domain"))
+    implementation(project(":drive-share-data"))
     implementation(libs.retrofit)
 //    androidTestImplementation(project(":drive:db"))
 //    kaptAndroidTest(libs.androidx.room.compiler)

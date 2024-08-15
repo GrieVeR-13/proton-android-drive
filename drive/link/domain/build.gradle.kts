@@ -31,9 +31,9 @@ driveModule(
     serialization = true,
     socialTest = true,
 ) {
-    api(project(":proton-android-drive-base-domain"))
-    api(project(":proton-android-drive-share-domain"))
-    api(project(":proton-android-drive-share-url-base-domain"))
+    api(project(":drive-base-domain"))
+    api(project(":drive-share-domain"))
+    api(project(":drive-share-url-base-domain"))
 //    testImplementation(project(":drive:db-test"))
 //    testImplementation(project(":drive:link:data"))
 }

@@ -28,7 +28,7 @@ android {
 }
 
 driveModule {
-    api(project(":proton-android-drive-base-domain"))
+    api(project(":drive-base-domain"))
 
 //    testImplementation(project(":drive:volume:data"))
 }

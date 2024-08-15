@@ -31,7 +31,7 @@ driveModule(
     room = true,
     serialization = true,
 ) {
-    api(project(":proton-android-drive-folder-domain"))
-    api(project(":proton-android-drive-link-data"))
+    api(project(":drive-folder-domain"))
+    api(project(":drive-link-data"))
     implementation(libs.retrofit)
 }

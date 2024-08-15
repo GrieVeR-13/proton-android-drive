@@ -32,8 +32,8 @@ driveModule(
     serialization = true,
     room = true,
 ) {
-    api(project(":proton-android-drive-share-domain"))
-    api(project(":proton-android-drive-base-data"))
+    api(project(":drive-share-domain"))
+    api(project(":drive-base-data"))
     implementation(libs.retrofit)
     implementation(libs.androidx.dataStore.preferences)
 

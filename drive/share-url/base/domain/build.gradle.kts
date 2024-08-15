@@ -27,7 +27,7 @@ android {
 }
 
 driveModule(hilt = true) {
-    api(project(":proton-android-drive-share-domain"))
+    api(project(":drive-share-domain"))
 
-    implementation(project(":proton-android-drive-event-manager-base-domain"))
+    implementation(project(":drive-event-manager-base-domain"))
 }

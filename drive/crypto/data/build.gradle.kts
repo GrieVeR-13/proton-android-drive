@@ -28,7 +28,7 @@ android {
 driveModule(
     hilt = true,
 ) {
-    api(project(":proton-android-drive-crypto-domain"))
+    api(project(":drive-crypto-domain"))
 
-    implementation(project(":proton-android-drive-crypto-base-domain"))
+    implementation(project(":drive-crypto-base-domain"))
 }

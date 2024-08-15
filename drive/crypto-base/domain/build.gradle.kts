@@ -26,7 +26,7 @@ android {
 }
 
 driveModule(hilt = true) {
-    api(project(":proton-android-drive-base-domain"))
+    api(project(":drive-base-domain"))
     api(libs.core.auth.domain)
     api(libs.core.cryptoCommon)
     api(libs.core.key.domain)

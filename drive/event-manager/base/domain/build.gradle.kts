@@ -27,6 +27,6 @@ android {
 }
 
 driveModule {
-    api(project(":proton-android-drive-base-domain"))
-    api(project(":proton-android-drive-share-domain"))
+    api(project(":drive-base-domain"))
+    api(project(":drive-share-domain"))
 }

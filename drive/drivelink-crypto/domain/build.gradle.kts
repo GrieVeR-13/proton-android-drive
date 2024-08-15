@@ -26,7 +26,7 @@ android {
 }
 
 driveModule(hilt = true) {
-    api(project(":proton-android-drive-drivelink-domain"))
+    api(project(":drive-drivelink-domain"))
 
     implementation(project(":drive:crypto:domain"))
     implementation(project(":drive:crypto-base:domain"))

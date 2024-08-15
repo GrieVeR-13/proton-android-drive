@@ -29,5 +29,5 @@ driveModule(
     hilt = true,
     socialTest = true,
 ) {
-    api(project(":proton-android-drive-link-domain"))
+    api(project(":drive-link-domain"))
 }

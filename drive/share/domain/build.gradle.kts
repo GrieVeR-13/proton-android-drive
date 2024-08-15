@@ -32,5 +32,5 @@ driveModule(
     serialization = true,
     socialTest = true,
 ) {
-    api(project(":proton-android-drive-volume-domain"))
+    api(project(":drive-volume-domain"))
 }

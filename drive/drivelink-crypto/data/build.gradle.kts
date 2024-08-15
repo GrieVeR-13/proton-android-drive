@@ -31,5 +31,5 @@ driveModule(
     room = true,
     serialization = true,
 ) {
-    api(project(":proton-android-drive-drivelink-crypto-domain"))
+    api(project(":drive-drivelink-crypto-domain"))
 }
