@@ -28,18 +28,19 @@ import me.proton.core.drive.base.domain.extension.flowOf
 import me.proton.core.drive.base.domain.provider.ConfigurationProvider
 import me.proton.core.drive.base.domain.repository.fetcher
 import me.proton.core.drive.drivelink.domain.entity.DriveLink
-import me.proton.core.drive.drivelink.list.domain.extension.toFolderSorting
+//import me.proton.core.drive.drivelink.list.domain.extension.toFolderSorting
+import me.proton.core.drive.folder.domain.entity.Sorting
 import me.proton.core.drive.folder.domain.repository.FolderRepository
 import me.proton.core.drive.link.domain.entity.FolderId
 import me.proton.core.drive.link.domain.extension.userId
-import me.proton.core.drive.sorting.domain.usecase.GetSorting
+//import me.proton.core.drive.sorting.domain.usecase.GetSorting
 import javax.inject.Inject
 
 class GetFolderChildrenDriveLinks @Inject constructor(
     private val getDriveLinks: GetDriveLinks,
     private val folderRepository: FolderRepository,
     private val configurationProvider: ConfigurationProvider,
-    private val getSorting: GetSorting,
+//    private val getSorting: GetSorting,
 ) {
 
     operator fun invoke(
@@ -55,7 +56,7 @@ class GetFolderChildrenDriveLinks @Inject constructor(
                         folderId = folderId,
                         pageIndex = 0,
                         pageSize = configurationProvider.uiPageSize,
-                        sorting = getSorting(folderId.userId).first().toFolderSorting()
+                        sorting = Sorting.DEFAULT //getSorting(folderId.userId).first().toFolderSorting() //todoe
                     ).getOrThrow()
                     saveAction()
                 }

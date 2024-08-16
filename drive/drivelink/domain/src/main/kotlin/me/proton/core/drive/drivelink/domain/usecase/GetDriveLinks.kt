@@ -27,8 +27,8 @@ import javax.inject.Inject
 
 class GetDriveLinks @Inject constructor(
     private val driveLinkRepository: DriveLinkRepository,
-    private val updateSharePermissions: UpdateSharePermissions,
-    private val updateShareUserDisplayName: UpdateShareUserDisplayName,
+//    private val updateSharePermissions: UpdateSharePermissions,
+//    private val updateShareUserDisplayName: UpdateShareUserDisplayName,
 ) {
     operator fun invoke(
         linkIds: List<LinkId>,
@@ -38,8 +38,8 @@ class GetDriveLinks @Inject constructor(
             .map { driveLinks ->
                 driveLinks.map { driveLink ->
                     driveLink
-                        .let { link -> updateSharePermissions(link) }
-                        .let { link -> updateShareUserDisplayName(link) }
+//                        .let { link -> updateSharePermissions(link) } //todoe
+//                        .let { link -> updateShareUserDisplayName(link) }
                 }
             }
 }
