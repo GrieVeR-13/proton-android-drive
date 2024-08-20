@@ -19,11 +19,8 @@
 package me.proton.android.drive.db
 
 import android.content.Context
-import androidx.room.AutoMigration
 import androidx.room.Database
 import androidx.room.TypeConverters
-import me.proton.android.drive.photos.data.db.MediaStoreVersionDatabase
-import me.proton.android.drive.photos.data.db.entity.MediaStoreVersionEntity
 import me.proton.core.account.data.db.AccountConverters
 import me.proton.core.account.data.db.AccountDatabase
 import me.proton.core.account.data.entity.AccountEntity
@@ -39,143 +36,15 @@ import me.proton.core.contact.data.local.db.entity.ContactCardEntity
 import me.proton.core.contact.data.local.db.entity.ContactEmailEntity
 import me.proton.core.contact.data.local.db.entity.ContactEmailLabelEntity
 import me.proton.core.contact.data.local.db.entity.ContactEntity
-import me.proton.core.crypto.android.keystore.CryptoConverters
 import me.proton.core.data.room.db.BaseDatabase
 import me.proton.core.data.room.db.CommonConverters
-import me.proton.core.drive.announce.event.data.db.EventConverters
-import me.proton.core.drive.backup.data.db.BackupDatabase
-import me.proton.core.drive.backup.data.db.entity.BackupConfigurationEntity
-import me.proton.core.drive.backup.data.db.entity.BackupDuplicateEntity
-import me.proton.core.drive.backup.data.db.entity.BackupErrorEntity
-import me.proton.core.drive.backup.data.db.entity.BackupFileEntity
-import me.proton.core.drive.backup.data.db.entity.BackupFolderEntity
 import me.proton.core.drive.base.data.db.entity.UrlLastFetchEntity
-import me.proton.core.drive.device.data.db.DeviceDatabase
-import me.proton.core.drive.device.data.db.entity.DeviceEntity
 import me.proton.core.drive.drivelink.data.db.DriveLinkDatabase
-import me.proton.core.drive.drivelink.download.data.db.DriveLinkDownloadDatabase
-import me.proton.core.drive.drivelink.offline.data.db.DriveLinkOfflineDatabase
-import me.proton.core.drive.drivelink.paged.data.db.DriveLinkPagedDatabase
-import me.proton.core.drive.drivelink.paged.data.db.entity.DriveLinkRemoteKeyEntity
-import me.proton.core.drive.drivelink.photo.data.db.DriveLinkPhotoDatabase
-import me.proton.core.drive.drivelink.photo.data.db.entity.PhotoListingRemoteKeyEntity
-import me.proton.core.drive.drivelink.selection.data.db.DriveLinkSelectionDatabase
-import me.proton.core.drive.drivelink.shared.data.db.DriveLinkSharedDatabase
-import me.proton.core.drive.drivelink.shared.data.db.entity.SharedRemoteKeyEntity
-import me.proton.core.drive.drivelink.trash.data.db.DriveLinkTrashDatabase
-import me.proton.core.drive.feature.flag.data.db.DriveFeatureFlagDatabase
-import me.proton.core.drive.feature.flag.data.db.entity.DriveFeatureFlagRefreshEntity
-import me.proton.core.drive.folder.data.db.FolderDatabase
-import me.proton.core.drive.folder.data.db.FolderMetadataEntity
 import me.proton.core.drive.link.data.db.LinkDatabase
 import me.proton.core.drive.link.data.db.entity.LinkEntity
 import me.proton.core.drive.link.data.db.entity.LinkFilePropertiesEntity
 import me.proton.core.drive.link.data.db.entity.LinkFolderPropertiesEntity
-import me.proton.core.drive.link.selection.data.db.LinkSelectionConverters
-import me.proton.core.drive.link.selection.data.db.LinkSelectionDatabase
-import me.proton.core.drive.link.selection.data.db.entity.LinkSelectionEntity
-import me.proton.core.drive.linkdownload.data.db.LinkDownloadDatabase
-import me.proton.core.drive.linkdownload.data.db.entity.DownloadBlockEntity
-import me.proton.core.drive.linkdownload.data.db.entity.LinkDownloadStateEntity
-import me.proton.core.drive.linknode.data.db.LinkAncestorDatabase
-import me.proton.core.drive.linkoffline.data.db.LinkOfflineDatabase
-import me.proton.core.drive.linkoffline.data.db.LinkOfflineEntity
-import me.proton.core.drive.linktrash.data.db.LinkTrashDatabase
-import me.proton.core.drive.linktrash.data.db.entity.LinkTrashStateEntity
-import me.proton.core.drive.linktrash.data.db.entity.TrashMetadataEntity
-import me.proton.core.drive.linktrash.data.db.entity.TrashWorkEntity
-import me.proton.core.drive.linkupload.data.db.LinkUploadDatabase
-import me.proton.core.drive.linkupload.data.db.entity.LinkUploadEntity
-import me.proton.core.drive.linkupload.data.db.entity.UploadBlockEntity
-import me.proton.core.drive.linkupload.data.db.entity.UploadBulkEntity
-import me.proton.core.drive.linkupload.data.db.entity.UploadBulkUriStringEntity
-import me.proton.core.drive.log.data.db.LogDatabase
-import me.proton.core.drive.log.data.db.entity.LogEntity
-import me.proton.core.drive.log.data.db.entity.LogOriginEntity
-import me.proton.core.drive.log.data.db.entity.LogLevelEntity
-import me.proton.core.drive.messagequeue.data.storage.db.MessageQueueDatabase
-import me.proton.core.drive.messagequeue.data.storage.db.entity.MessageEntity
-import me.proton.core.drive.notification.data.db.NotificationDatabase
-import me.proton.core.drive.notification.data.db.entity.NotificationChannelEntity
-import me.proton.core.drive.notification.data.db.entity.NotificationEventEntity
-import me.proton.core.drive.notification.data.db.entity.TaglessNotificationEventEntity
-import me.proton.core.drive.photo.data.db.PhotoDatabase
-import me.proton.core.drive.photo.data.db.entity.PhotoListingEntity
-import me.proton.core.drive.share.data.db.ShareDatabase
-import me.proton.core.drive.share.data.db.ShareEntity
-import me.proton.core.drive.share.data.db.ShareMembershipEntity
-import me.proton.core.drive.share.user.data.db.ShareUserDatabase
-import me.proton.core.drive.share.user.data.db.entity.ShareExternalInvitationEntity
-import me.proton.core.drive.share.user.data.db.entity.ShareInvitationEntity
-import me.proton.core.drive.share.user.data.db.entity.ShareMemberEntity
-import me.proton.core.drive.share.user.data.db.entity.SharedByMeListingEntity
-import me.proton.core.drive.share.user.data.db.entity.SharedWithMeListingEntity
-import me.proton.core.drive.shareurl.base.data.db.ShareUrlDatabase
-import me.proton.core.drive.shareurl.base.data.db.entity.ShareUrlEntity
-import me.proton.core.drive.sorting.data.db.SortingDatabase
-import me.proton.core.drive.sorting.data.db.entity.SortingEntity
-import me.proton.core.drive.stats.data.db.StatsDatabase
-import me.proton.core.drive.stats.data.db.entity.InitialBackupEntity
-import me.proton.core.drive.stats.data.db.entity.UploadStatsEntity
-import me.proton.core.drive.user.data.db.UserMessageDatabase
-import me.proton.core.drive.user.data.db.entity.DismissedQuotaEntity
-import me.proton.core.drive.user.data.db.entity.DismissedUserMessageEntity
-import me.proton.core.drive.volume.data.db.VolumeDatabase
-import me.proton.core.drive.volume.data.db.VolumeEntity
-import me.proton.core.drive.worker.data.db.WorkerDatabase
-import me.proton.core.drive.worker.data.db.WorkerRunEntity
-import me.proton.core.eventmanager.data.db.EventManagerConverters
-import me.proton.core.eventmanager.data.db.EventMetadataDatabase
-import me.proton.core.eventmanager.data.entity.EventMetadataEntity
-import me.proton.core.featureflag.data.db.FeatureFlagDatabase
-import me.proton.core.featureflag.data.entity.FeatureFlagEntity
-import me.proton.core.humanverification.data.db.HumanVerificationConverters
-import me.proton.core.humanverification.data.db.HumanVerificationDatabase
-import me.proton.core.humanverification.data.entity.HumanVerificationEntity
-import me.proton.core.key.data.db.KeySaltDatabase
-import me.proton.core.key.data.db.PublicAddressDatabase
-import me.proton.core.key.data.entity.KeySaltEntity
-import me.proton.core.key.data.entity.PublicAddressEntity
-import me.proton.core.key.data.entity.PublicAddressInfoEntity
-import me.proton.core.key.data.entity.PublicAddressKeyDataEntity
-import me.proton.core.key.data.entity.PublicAddressKeyEntity
-import me.proton.core.keytransparency.data.local.KeyTransparencyDatabase
-import me.proton.core.keytransparency.data.local.entity.AddressChangeEntity
-import me.proton.core.keytransparency.data.local.entity.SelfAuditResultEntity
-import me.proton.core.label.data.local.LabelConverters
-import me.proton.core.label.data.local.LabelDatabase
-import me.proton.core.label.data.local.LabelEntity
-import me.proton.core.notification.data.local.db.NotificationEntity
-import me.proton.core.observability.data.db.ObservabilityDatabase
-import me.proton.core.observability.data.entity.ObservabilityEventEntity
-import me.proton.core.payment.data.local.db.PaymentDatabase
-import me.proton.core.payment.data.local.entity.GooglePurchaseEntity
-import me.proton.core.payment.data.local.entity.PurchaseEntity
-import me.proton.core.push.data.local.db.PushConverters
-import me.proton.core.push.data.local.db.PushDatabase
-import me.proton.core.push.data.local.db.PushEntity
-import me.proton.core.telemetry.data.db.TelemetryDatabase
-import me.proton.core.telemetry.data.entity.TelemetryEventEntity
-import me.proton.core.user.data.db.AddressDatabase
-import me.proton.core.user.data.db.UserConverters
-import me.proton.core.user.data.db.UserDatabase
-import me.proton.core.user.data.entity.AddressEntity
-import me.proton.core.user.data.entity.AddressKeyEntity
-import me.proton.core.user.data.entity.UserEntity
-import me.proton.core.user.data.entity.UserKeyEntity
-import me.proton.core.userrecovery.data.db.DeviceRecoveryDatabase
-import me.proton.core.userrecovery.data.entity.RecoveryFileEntity
-import me.proton.core.usersettings.data.db.OrganizationDatabase
-import me.proton.core.usersettings.data.db.UserSettingsConverters
-import me.proton.core.usersettings.data.db.UserSettingsDatabase
-import me.proton.core.usersettings.data.entity.OrganizationEntity
-import me.proton.core.usersettings.data.entity.OrganizationKeysEntity
-import me.proton.core.usersettings.data.entity.UserSettingsEntity
-import me.proton.drive.android.settings.data.db.AppUiSettingsDatabase
-import me.proton.drive.android.settings.data.db.entity.UiSettingsEntity
 import me.proton.core.drive.base.data.db.BaseDatabase as DriveBaseDatabase
-import me.proton.core.notification.data.local.db.NotificationConverters as CoreNotificationConverters
-import me.proton.core.notification.data.local.db.NotificationDatabase as CoreNotificationDatabase
 
 @Database(
     entities = [
@@ -184,121 +53,121 @@ import me.proton.core.notification.data.local.db.NotificationDatabase as CoreNot
         AccountMetadataEntity::class,
         SessionEntity::class,
         SessionDetailsEntity::class,
-        UserEntity::class,
-        UserKeyEntity::class,
-        AddressEntity::class,
-        AddressKeyEntity::class,
-        KeySaltEntity::class,
-        PublicAddressEntity::class,
-        PublicAddressKeyEntity::class,
-        HumanVerificationEntity::class,
-        UserSettingsEntity::class,
-        OrganizationEntity::class,
-        OrganizationKeysEntity::class,
-        EventMetadataEntity::class,
-        FeatureFlagEntity::class,
+//        UserEntity::class,
+//        UserKeyEntity::class,
+//        AddressEntity::class,
+//        AddressKeyEntity::class,
+//        KeySaltEntity::class,
+//        PublicAddressEntity::class,
+//        PublicAddressKeyEntity::class,
+//        HumanVerificationEntity::class,
+//        UserSettingsEntity::class,
+//        OrganizationEntity::class,
+//        OrganizationKeysEntity::class,
+//        EventMetadataEntity::class,
+//        FeatureFlagEntity::class,
         ChallengeFrameEntity::class,
-        PurchaseEntity::class,
-        GooglePurchaseEntity::class,
-        ObservabilityEventEntity::class,
-        AddressChangeEntity::class,
-        SelfAuditResultEntity::class,
-        NotificationEntity::class,
-        PushEntity::class,
-        TelemetryEventEntity::class,
+//        PurchaseEntity::class,
+//        GooglePurchaseEntity::class,
+//        ObservabilityEventEntity::class,
+//        AddressChangeEntity::class,
+//        SelfAuditResultEntity::class,
+//        NotificationEntity::class,
+//        PushEntity::class,
+//        TelemetryEventEntity::class,
         ContactCardEntity::class,
         ContactEmailEntity::class,
         ContactEmailLabelEntity::class,
         ContactEntity::class,
-        RecoveryFileEntity::class,
-        PublicAddressInfoEntity::class,
-        PublicAddressKeyDataEntity::class,
-        LabelEntity::class,
+//        RecoveryFileEntity::class,
+//        PublicAddressInfoEntity::class,
+//        PublicAddressKeyDataEntity::class,
+//        LabelEntity::class,
         // Drive
-        VolumeEntity::class,
-        ShareEntity::class,
-        ShareUrlEntity::class,
-        ShareExternalInvitationEntity::class,
-        ShareInvitationEntity::class,
-        ShareMemberEntity::class,
-        ShareMembershipEntity::class,
+//        VolumeEntity::class,
+//        ShareEntity::class,
+//        ShareUrlEntity::class,
+//        ShareExternalInvitationEntity::class,
+//        ShareInvitationEntity::class,
+//        ShareMemberEntity::class,
+//        ShareMembershipEntity::class,
         LinkEntity::class,
         LinkFilePropertiesEntity::class,
         LinkFolderPropertiesEntity::class,
-        LinkOfflineEntity::class,
-        LinkDownloadStateEntity::class,
-        DownloadBlockEntity::class,
-        LinkTrashStateEntity::class,
+//        LinkOfflineEntity::class,
+//        LinkDownloadStateEntity::class,
+//        DownloadBlockEntity::class,
+//        LinkTrashStateEntity::class,
         // Trash
-        TrashWorkEntity::class,
+//        TrashWorkEntity::class,
         // MessageQueue
-        MessageEntity::class,
+//        MessageEntity::class,
         // AppUiSettings
-        UiSettingsEntity::class,
+//        UiSettingsEntity::class,
         // DriveLinkPaged
-        DriveLinkRemoteKeyEntity::class,
+//        DriveLinkRemoteKeyEntity::class,
         // Sorting
-        SortingEntity::class,
+//        SortingEntity::class,
         // Upload
-        LinkUploadEntity::class,
-        UploadBlockEntity::class,
-        UploadBulkEntity::class,
-        UploadBulkUriStringEntity::class,
-        FolderMetadataEntity::class,
-        TrashMetadataEntity::class,
+//        LinkUploadEntity::class,
+//        UploadBlockEntity::class,
+//        UploadBulkEntity::class,
+//        UploadBulkUriStringEntity::class,
+//        FolderMetadataEntity::class,
+//        TrashMetadataEntity::class,
         // Backup
-        BackupConfigurationEntity::class,
-        BackupDuplicateEntity::class,
-        BackupErrorEntity::class,
-        BackupFileEntity::class,
-        BackupFolderEntity::class,
+//        BackupConfigurationEntity::class,
+//        BackupDuplicateEntity::class,
+//        BackupErrorEntity::class,
+//        BackupFileEntity::class,
+//        BackupFolderEntity::class,
         // Stats
-        InitialBackupEntity::class,
-        UploadStatsEntity::class,
+//        InitialBackupEntity::class,
+//        UploadStatsEntity::class,
         // UserMessage
-        DismissedQuotaEntity::class,
-        DismissedUserMessageEntity::class,
+//        DismissedQuotaEntity::class,
+//        DismissedUserMessageEntity::class,
         // Notification
-        NotificationChannelEntity::class,
-        NotificationEventEntity::class,
-        TaglessNotificationEventEntity::class,
+//        NotificationChannelEntity::class,
+//        NotificationEventEntity::class,
+//        TaglessNotificationEventEntity::class,
         // Selection
-        LinkSelectionEntity::class,
+//        LinkSelectionEntity::class,
         // Worker
-        WorkerRunEntity::class,
+//        WorkerRunEntity::class,
         // Photos
-        PhotoListingEntity::class,
-        PhotoListingRemoteKeyEntity::class,
+//        PhotoListingEntity::class,
+//        PhotoListingRemoteKeyEntity::class,
         // FeatureFlag
-        DriveFeatureFlagRefreshEntity::class,
-        MediaStoreVersionEntity::class,
+//        DriveFeatureFlagRefreshEntity::class,
+//        MediaStoreVersionEntity::class,
         // Device
-        DeviceEntity::class,
+//        DeviceEntity::class,
         // Base
         UrlLastFetchEntity::class,
         // Log
-        LogEntity::class,
-        LogLevelEntity::class,
-        LogOriginEntity::class,
+//        LogEntity::class,
+//        LogLevelEntity::class,
+//        LogOriginEntity::class,
         // Sharing
-        SharedWithMeListingEntity::class,
-        SharedByMeListingEntity::class,
-        SharedRemoteKeyEntity::class,
+//        SharedWithMeListingEntity::class,
+//        SharedByMeListingEntity::class,
+//        SharedRemoteKeyEntity::class,
     ],
     version = DriveDatabase.VERSION,
     autoMigrations = [
-        AutoMigration(from = 4, to = 5),
-        AutoMigration(from = 5, to = 6),
-        AutoMigration(from = 7, to = 8),
-        AutoMigration(from = 9, to = 10),
-        AutoMigration(from = 13, to = 14),
-        AutoMigration(from = 15, to = 16),
-        AutoMigration(from = 16, to = 17),
-        AutoMigration(from = 17, to = 18, spec = ShareDatabase.DeleteBlockSizeFromShareEntity::class),
-        AutoMigration(from = 18, to = 19),
-        AutoMigration(from = 22, to = 23),
-        AutoMigration(from = 23, to = 24),
-        AutoMigration(from = 26, to = 27),
+//        AutoMigration(from = 4, to = 5),
+//        AutoMigration(from = 5, to = 6),
+//        AutoMigration(from = 7, to = 8),
+//        AutoMigration(from = 9, to = 10),
+//        AutoMigration(from = 13, to = 14),
+//        AutoMigration(from = 15, to = 16),
+//        AutoMigration(from = 16, to = 17),
+//        AutoMigration(from = 17, to = 18, spec = ShareDatabase.DeleteBlockSizeFromShareEntity::class),
+//        AutoMigration(from = 18, to = 19),
+//        AutoMigration(from = 22, to = 23),
+//        AutoMigration(from = 23, to = 24),
+//        AutoMigration(from = 26, to = 27),
     ],
     exportSchema = true
 )
@@ -306,76 +175,77 @@ import me.proton.core.notification.data.local.db.NotificationDatabase as CoreNot
     // Core
     CommonConverters::class,
     AccountConverters::class,
-    UserConverters::class,
-    CryptoConverters::class,
-    HumanVerificationConverters::class,
-    UserSettingsConverters::class,
-    EventManagerConverters::class,
+//    UserConverters::class,
+//    CryptoConverters::class,
+//    HumanVerificationConverters::class,
+//    UserSettingsConverters::class,
+//    EventManagerConverters::class,
     ChallengeConverters::class,
-    CoreNotificationConverters::class,
-    PushConverters::class,
+//    CoreNotificationConverters::class,
+//    PushConverters::class,
     ContactConverters::class,
-    LabelConverters::class,
+//    LabelConverters::class,
     // Drive
-    EventConverters::class,
-    LinkSelectionConverters::class
+//    EventConverters::class,
+//    LinkSelectionConverters::class
 )
 abstract class DriveDatabase :
     BaseDatabase(),
     AccountDatabase,
-    UserDatabase,
-    AddressDatabase,
+//    UserDatabase,
+//    AddressDatabase,
     ContactDatabase,
-    KeySaltDatabase,
-    HumanVerificationDatabase,
-    PublicAddressDatabase,
-    UserSettingsDatabase,
-    LabelDatabase,
-    OrganizationDatabase,
-    FeatureFlagDatabase,
-    VolumeDatabase,
-    ShareDatabase,
-    ShareUrlDatabase,
-    ShareUserDatabase,
+//    KeySaltDatabase,
+//    HumanVerificationDatabase,
+//    PublicAddressDatabase,
+//    UserSettingsDatabase,
+//    LabelDatabase,
+//    OrganizationDatabase,
+//    FeatureFlagDatabase,
+//    VolumeDatabase,
+//    ShareDatabase,
+//    ShareUrlDatabase,
+//    ShareUserDatabase,
     LinkDatabase,
-    FolderDatabase,
-    LinkAncestorDatabase,
-    LinkOfflineDatabase,
-    LinkDownloadDatabase,
-    LinkTrashDatabase,
-    LinkSelectionDatabase,
-    MessageQueueDatabase,
-    AppUiSettingsDatabase,
-    EventMetadataDatabase,
+//    FolderDatabase,
+//    LinkAncestorDatabase,
+//    LinkOfflineDatabase,
+//    LinkDownloadDatabase,
+//    LinkTrashDatabase,
+//    LinkSelectionDatabase,
+//    MessageQueueDatabase,
+//    AppUiSettingsDatabase,
+//    EventMetadataDatabase,
     ChallengeDatabase,
-    SortingDatabase,
-    LinkUploadDatabase,
-    StatsDatabase,
+//    SortingDatabase,
+//    LinkUploadDatabase,
+//    StatsDatabase,
     DriveLinkDatabase,
-    DriveLinkPagedDatabase,
-    DriveLinkTrashDatabase,
-    DriveLinkOfflineDatabase,
-    DriveLinkDownloadDatabase,
-    DriveLinkSharedDatabase,
-    DriveLinkSelectionDatabase,
-    NotificationDatabase,
-    PaymentDatabase,
-    BackupDatabase,
-    UserMessageDatabase,
-    ObservabilityDatabase,
-    KeyTransparencyDatabase,
-    WorkerDatabase,
-    CoreNotificationDatabase,
-    PushDatabase,
-    TelemetryDatabase,
-    PhotoDatabase,
-    DriveLinkPhotoDatabase,
-    DriveFeatureFlagDatabase,
-    MediaStoreVersionDatabase,
-    DeviceDatabase,
-    DriveBaseDatabase,
-    LogDatabase,
-    DeviceRecoveryDatabase {
+//    DriveLinkPagedDatabase,
+//    DriveLinkTrashDatabase,
+//    DriveLinkOfflineDatabase,
+//    DriveLinkDownloadDatabase,
+//    DriveLinkSharedDatabase,
+//    DriveLinkSelectionDatabase,
+//    NotificationDatabase,
+//    PaymentDatabase,
+//    BackupDatabase,
+//    UserMessageDatabase,
+//    ObservabilityDatabase,
+//    KeyTransparencyDatabase,
+//    WorkerDatabase,
+//    CoreNotificationDatabase,
+//    PushDatabase,
+//    TelemetryDatabase,
+//    PhotoDatabase,
+//    DriveLinkPhotoDatabase,
+//    DriveFeatureFlagDatabase,
+//    MediaStoreVersionDatabase,
+//    DeviceDatabase,
+    DriveBaseDatabase
+//    LogDatabase,
+//    DeviceRecoveryDatabase
+{
 
     companion object {
         const val VERSION = 66
@@ -451,7 +321,7 @@ abstract class DriveDatabase :
         fun buildDatabase(context: Context): DriveDatabase =
             databaseBuilder<DriveDatabase>(context, "db-drive")
                 .fallbackToDestructiveMigrationOnDowngrade()
-                .apply { migrations.forEach { addMigrations(it) } }
+//                .apply { migrations.forEach { addMigrations(it) } }
                 .build()
     }
 }
