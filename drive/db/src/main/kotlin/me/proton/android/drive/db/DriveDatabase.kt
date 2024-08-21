@@ -46,7 +46,9 @@ import me.proton.core.drive.link.data.db.entity.LinkEntity
 import me.proton.core.drive.link.data.db.entity.LinkFilePropertiesEntity
 import me.proton.core.drive.link.data.db.entity.LinkFolderPropertiesEntity
 import me.proton.core.drive.share.data.db.ShareEntity
+import me.proton.core.user.data.db.AddressDatabase
 import me.proton.core.user.data.db.UserConverters
+import me.proton.core.user.data.db.UserDatabase
 import me.proton.core.user.data.entity.AddressEntity
 import me.proton.core.user.data.entity.AddressKeyEntity
 import me.proton.core.user.data.entity.UserEntity
@@ -199,8 +201,8 @@ import me.proton.core.drive.base.data.db.BaseDatabase as DriveBaseDatabase
 abstract class DriveDatabase :
     BaseDatabase(),
     AccountDatabase,
-//    UserDatabase,
-//    AddressDatabase,
+    UserDatabase,
+    AddressDatabase,
     ContactDatabase,
 //    KeySaltDatabase,
 //    HumanVerificationDatabase,
