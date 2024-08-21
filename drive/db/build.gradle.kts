@@ -32,46 +32,46 @@ driveModule(
     hilt = true,
     room = true,
 ) {
-//    api(libs.core.account.data)
-//    api(libs.core.challenge.data)
-//    api(libs.core.contact.data)
-//    api(libs.core.crypto.android)
-//    api(libs.core.eventManager.data) {
-//        exclude("me.proton.core", "presentation")
-//        exclude("me.proton.core", "account-manager-presentation")
-//    }
-//    api(libs.core.featureFlag.data)
-//    api(libs.core.humanVerification.data) {
-//        exclude("me.proton.core", "human-verification-domain")
-//        exclude("me.proton.core", "util-android-dagger")
-//    }
-//    api(libs.core.key.data) {
-//        isTransitive = false
-//    }
-//    api(libs.core.label.data)
-//    api(libs.core.notification.data)
-//    api(libs.core.observability.data)
-//    api(libs.core.payment.data) {
-//        exclude("me.proton.core", "payment-domain")
-//    }
-//    api(libs.core.push.data)
-//    api(libs.core.telemetry.data)
-//    api(libs.core.user.data) {
-//        exclude("me.proton.core", "key-data")
-//        exclude("me.proton.core", "payment-domain")
-//    }
-//    api(libs.core.userRecovery.data)
-//    api(libs.core.userSettings.data) {
-//        exclude("me.proton.core", "key-data")
-//        exclude("me.proton.core", "payment-domain")
-//    }
-//    api(libs.core.keyTransparency.data){
-//        exclude("me.proton.core", "presentation")
-//        exclude("me.proton.core", "user-settings-domain")
-//        exclude("me.proton.core", "account-manager-presentation")
-//        exclude("me.proton.core", "auth-presentation")
-//    }
-//    // TODO: Extract from drive db
+    api(libs.core.account.data)
+    api(libs.core.challenge.data)
+    api(libs.core.contact.data)
+    api(libs.core.crypto.android)
+    api(libs.core.eventManager.data) {
+        exclude("me.proton.core", "presentation")
+        exclude("me.proton.core", "account-manager-presentation")
+    }
+    api(libs.core.featureFlag.data)
+    api(libs.core.humanVerification.data) {
+        exclude("me.proton.core", "human-verification-domain")
+        exclude("me.proton.core", "util-android-dagger")
+    }
+    api(libs.core.key.data) {
+        isTransitive = false
+    }
+    api(libs.core.label.data)
+    api(libs.core.notification.data)
+    api(libs.core.observability.data)
+    api(libs.core.payment.data) {
+        exclude("me.proton.core", "payment-domain")
+    }
+    api(libs.core.push.data)
+    api(libs.core.telemetry.data)
+    api(libs.core.user.data) {
+        exclude("me.proton.core", "key-data")
+        exclude("me.proton.core", "payment-domain")
+    }
+    api(libs.core.userRecovery.data)
+    api(libs.core.userSettings.data) {
+        exclude("me.proton.core", "key-data")
+        exclude("me.proton.core", "payment-domain")
+    }
+    api(libs.core.keyTransparency.data){
+        exclude("me.proton.core", "presentation")
+        exclude("me.proton.core", "user-settings-domain")
+        exclude("me.proton.core", "account-manager-presentation")
+        exclude("me.proton.core", "auth-presentation")
+    }
+    // TODO: Extract from drive db
 //    api(project(":app-ui-settings"))
 //    api(project(":drive:announce-event:data"))
 //    api(project(":drive:backup:data"))
@@ -97,7 +97,7 @@ driveModule(
 //    api(project(":drive:message-queue:data"))
 //    api(project(":drive:notification:data"))
 //    api(project(":drive:photo:data"))
-//    api(project(":drive:share:data"))
+    api(project(":drive-share-data"))
 //    api(project(":drive:share-user:data"))
 //    api(project(":drive:share-url:base:data"))
 //    api(project(":drive:sorting:data"))
