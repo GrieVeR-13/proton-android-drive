@@ -40,12 +40,21 @@ import me.proton.core.crypto.android.keystore.CryptoConverters
 import me.proton.core.data.room.db.BaseDatabase
 import me.proton.core.data.room.db.CommonConverters
 import me.proton.core.drive.base.data.db.entity.UrlLastFetchEntity
-//import me.proton.core.drive.drivelink.data.db.DriveLinkDatabase
+import me.proton.core.drive.drivelink.data.db.DriveLinkDatabase
 import me.proton.core.drive.link.data.db.LinkDatabase
 import me.proton.core.drive.link.data.db.entity.LinkEntity
 import me.proton.core.drive.link.data.db.entity.LinkFilePropertiesEntity
 import me.proton.core.drive.link.data.db.entity.LinkFolderPropertiesEntity
+import me.proton.core.drive.linkdownload.data.db.entity.DownloadBlockEntity
+import me.proton.core.drive.linkdownload.data.db.entity.LinkDownloadStateEntity
+import me.proton.core.drive.linkoffline.data.db.LinkOfflineEntity
+import me.proton.core.drive.linktrash.data.db.entity.LinkTrashStateEntity
+import me.proton.core.drive.share.data.db.ShareDatabase
 import me.proton.core.drive.share.data.db.ShareEntity
+import me.proton.core.drive.share.data.db.ShareMembershipEntity
+import me.proton.core.drive.share.user.data.db.entity.ShareInvitationEntity
+import me.proton.core.drive.share.user.data.db.entity.ShareMemberEntity
+import me.proton.core.drive.volume.data.db.VolumeDatabase
 import me.proton.core.key.data.db.KeySaltDatabase
 import me.proton.core.key.data.entity.KeySaltEntity
 import me.proton.core.user.data.db.AddressDatabase
@@ -99,16 +108,16 @@ import me.proton.core.drive.base.data.db.BaseDatabase as DriveBaseDatabase
         ShareEntity::class,
 //        ShareUrlEntity::class,
 //        ShareExternalInvitationEntity::class,
-//        ShareInvitationEntity::class,
-//        ShareMemberEntity::class,
-//        ShareMembershipEntity::class,
+        ShareInvitationEntity::class,
+        ShareMemberEntity::class,
+        ShareMembershipEntity::class,
         LinkEntity::class,
         LinkFilePropertiesEntity::class,
         LinkFolderPropertiesEntity::class,
-//        LinkOfflineEntity::class,
-//        LinkDownloadStateEntity::class,
-//        DownloadBlockEntity::class,
-//        LinkTrashStateEntity::class,
+        LinkOfflineEntity::class,
+        LinkDownloadStateEntity::class,
+        DownloadBlockEntity::class,
+        LinkTrashStateEntity::class,
         // Trash
 //        TrashWorkEntity::class,
         // MessageQueue
@@ -213,8 +222,8 @@ abstract class DriveDatabase :
 //    LabelDatabase,
 //    OrganizationDatabase,
 //    FeatureFlagDatabase,
-//    VolumeDatabase,
-//    ShareDatabase,
+    VolumeDatabase,
+    ShareDatabase,
 //    ShareUrlDatabase,
 //    ShareUserDatabase,
     LinkDatabase,
@@ -231,7 +240,7 @@ abstract class DriveDatabase :
 //    SortingDatabase,
 //    LinkUploadDatabase,
 //    StatsDatabase,
-//    DriveLinkDatabase,
+    DriveLinkDatabase,
 //    DriveLinkPagedDatabase,
 //    DriveLinkTrashDatabase,
 //    DriveLinkOfflineDatabase,
