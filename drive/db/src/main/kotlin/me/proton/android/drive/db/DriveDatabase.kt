@@ -46,6 +46,8 @@ import me.proton.core.drive.link.data.db.entity.LinkEntity
 import me.proton.core.drive.link.data.db.entity.LinkFilePropertiesEntity
 import me.proton.core.drive.link.data.db.entity.LinkFolderPropertiesEntity
 import me.proton.core.drive.share.data.db.ShareEntity
+import me.proton.core.key.data.db.KeySaltDatabase
+import me.proton.core.key.data.entity.KeySaltEntity
 import me.proton.core.user.data.db.AddressDatabase
 import me.proton.core.user.data.db.UserConverters
 import me.proton.core.user.data.db.UserDatabase
@@ -66,7 +68,7 @@ import me.proton.core.drive.base.data.db.BaseDatabase as DriveBaseDatabase
         UserKeyEntity::class,
         AddressEntity::class,
         AddressKeyEntity::class,
-//        KeySaltEntity::class,
+        KeySaltEntity::class,
 //        PublicAddressEntity::class,
 //        PublicAddressKeyEntity::class,
 //        HumanVerificationEntity::class,
@@ -204,7 +206,7 @@ abstract class DriveDatabase :
     UserDatabase,
     AddressDatabase,
     ContactDatabase,
-//    KeySaltDatabase,
+    KeySaltDatabase,
 //    HumanVerificationDatabase,
 //    PublicAddressDatabase,
 //    UserSettingsDatabase,
@@ -257,7 +259,7 @@ abstract class DriveDatabase :
 {
 
     companion object {
-        const val VERSION = 66
+        const val VERSION = 1
 
 //        private val migrations = listOf(
 //            DriveDatabaseMigrations.MIGRATION_1_2,
