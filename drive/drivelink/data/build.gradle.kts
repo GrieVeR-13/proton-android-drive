@@ -31,12 +31,12 @@ driveModule(
     room = true,
 ) {
     api(project(":drive-link-data"))
-//    api(project(":drive-link-download-data"))
-//    api(project(":drive-link-offline-data"))
-//    api(project(":drive-link-trash-data"))
+    api(project(":drive-link-download-data"))
+    api(project(":drive-link-offline-data"))
+    api(project(":drive-link-trash-data"))
 //    api(project(":drive-link-selection-data"))
     api(project(":drive-drivelink-domain"))
-//    api(project(":drive-share-user-data"))
+    api(project(":drive-share-user-data"))
 
 //    testImplementation(project(":drive:db-test"))
 }
