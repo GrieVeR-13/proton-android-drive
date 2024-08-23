@@ -23,10 +23,10 @@ import me.proton.core.drive.drivelink.domain.entity.DriveLink
 import me.proton.core.drive.link.data.extension.toLink
 import me.proton.core.drive.link.data.extension.toLinkWithProperties
 import me.proton.core.drive.link.domain.entity.Link
-//import me.proton.core.drive.linkdownload.data.extension.toDownloadState
+import me.proton.core.drive.linkdownload.data.extension.toDownloadState
 import me.proton.core.drive.linkdownload.domain.entity.DownloadState
 import me.proton.core.drive.linktrash.domain.entity.TrashState
-//import me.proton.core.drive.share.user.data.extension.toShareUserMember
+import me.proton.core.drive.share.user.data.extension.toShareUserMember
 import me.proton.core.drive.share.user.domain.entity.ShareUser
 import me.proton.core.drive.volume.domain.entity.VolumeId
 
