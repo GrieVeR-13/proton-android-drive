@@ -41,6 +41,8 @@ import me.proton.core.data.room.db.BaseDatabase
 import me.proton.core.data.room.db.CommonConverters
 import me.proton.core.drive.base.data.db.entity.UrlLastFetchEntity
 import me.proton.core.drive.drivelink.data.db.DriveLinkDatabase
+import me.proton.core.drive.folder.data.db.FolderDatabase
+import me.proton.core.drive.folder.data.db.FolderMetadataEntity
 import me.proton.core.drive.link.data.db.LinkDatabase
 import me.proton.core.drive.link.data.db.entity.LinkEntity
 import me.proton.core.drive.link.data.db.entity.LinkFilePropertiesEntity
@@ -55,6 +57,7 @@ import me.proton.core.drive.share.data.db.ShareMembershipEntity
 import me.proton.core.drive.share.user.data.db.entity.ShareInvitationEntity
 import me.proton.core.drive.share.user.data.db.entity.ShareMemberEntity
 import me.proton.core.drive.volume.data.db.VolumeDatabase
+import me.proton.core.drive.volume.data.db.VolumeEntity
 import me.proton.core.key.data.db.KeySaltDatabase
 import me.proton.core.key.data.entity.KeySaltEntity
 import me.proton.core.user.data.db.AddressDatabase
@@ -104,7 +107,7 @@ import me.proton.core.drive.base.data.db.BaseDatabase as DriveBaseDatabase
 //        PublicAddressKeyDataEntity::class,
 //        LabelEntity::class,
         // Drive
-//        VolumeEntity::class,
+        VolumeEntity::class,
         ShareEntity::class,
 //        ShareUrlEntity::class,
 //        ShareExternalInvitationEntity::class,
@@ -133,7 +136,7 @@ import me.proton.core.drive.base.data.db.BaseDatabase as DriveBaseDatabase
 //        UploadBlockEntity::class,
 //        UploadBulkEntity::class,
 //        UploadBulkUriStringEntity::class,
-//        FolderMetadataEntity::class,
+        FolderMetadataEntity::class,
 //        TrashMetadataEntity::class,
         // Backup
 //        BackupConfigurationEntity::class,
@@ -227,7 +230,7 @@ abstract class DriveDatabase :
 //    ShareUrlDatabase,
 //    ShareUserDatabase,
     LinkDatabase,
-//    FolderDatabase,
+    FolderDatabase,
 //    LinkAncestorDatabase,
 //    LinkOfflineDatabase,
 //    LinkDownloadDatabase,
