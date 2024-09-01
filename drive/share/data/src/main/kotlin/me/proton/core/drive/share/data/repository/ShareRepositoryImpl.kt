@@ -100,14 +100,29 @@ class ShareRepositoryImpl @Inject constructor(
         val response = api.getShareBootstrap(shareId)
         db.inTransaction {
             dao.insertOrUpdate(response.toShareEntity(shareId.userId))
-            response.memberships.firstOrNull()?.let { membershipDto ->
-                val email = getUserEmail(
-                    userId = shareId.userId,
-                    addressId = AddressId(membershipDto.addressId),
-                )
-                db.shareMembershipDao.insertOrUpdate(membershipDto.toShareUserMember(shareId, email))
-            }
         }
+        try {
+                response.memberships.firstOrNull()?.let { membershipDto ->
+                db.inTransaction {
+                    val email = getUserEmail(
+                        userId = shareId.userId,
+                        addressId = AddressId(membershipDto.addressId),
+                    )
+                    db.shareMembershipDao.insertOrUpdate(membershipDto.toShareUserMember(shareId, email))
+                }
+            }
+
+        } catch(e: Throwable) {
+            e
+            e
+            e
+            e
+            response
+            response
+            response
+        }
+
+
     }
 
     override suspend fun deleteShare(shareId: ShareId, locallyOnly: Boolean, force: Boolean) {
