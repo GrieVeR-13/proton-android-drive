@@ -88,7 +88,7 @@ driveModule(
     api(project(":drive-folder-data"))
 //    api(project(":drive:link:data"))
 //    api(project(":drive:link-download:data"))
-//    api(project(":drive:link-node:data"))
+    api(project(":drive-link-node-data"))
 //    api(project(":drive:link-offline:data"))
 //    api(project(":drive:link-selection:data"))
 //    api(project(":drive:link-trash:data"))

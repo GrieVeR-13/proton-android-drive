@@ -49,6 +49,8 @@ import me.proton.core.drive.link.data.db.entity.LinkFilePropertiesEntity
 import me.proton.core.drive.link.data.db.entity.LinkFolderPropertiesEntity
 import me.proton.core.drive.linkdownload.data.db.entity.DownloadBlockEntity
 import me.proton.core.drive.linkdownload.data.db.entity.LinkDownloadStateEntity
+import me.proton.core.drive.linknode.data.db.LinkAncestorDatabase
+import me.proton.core.drive.linkoffline.data.db.LinkOfflineDatabase
 import me.proton.core.drive.linkoffline.data.db.LinkOfflineEntity
 import me.proton.core.drive.linktrash.data.db.entity.LinkTrashStateEntity
 import me.proton.core.drive.share.data.db.ShareDatabase
@@ -231,8 +233,8 @@ abstract class DriveDatabase :
 //    ShareUserDatabase,
     LinkDatabase,
     FolderDatabase,
-//    LinkAncestorDatabase,
-//    LinkOfflineDatabase,
+    LinkAncestorDatabase,
+    LinkOfflineDatabase,
 //    LinkDownloadDatabase,
 //    LinkTrashDatabase,
 //    LinkSelectionDatabase,
@@ -342,6 +344,7 @@ abstract class DriveDatabase :
 //        )
 
         fun buildDatabase(context: Context): DriveDatabase =
+//            Room.inMemoryDatabaseBuilder(context, DriveDatabase::class.java)
             databaseBuilder<DriveDatabase>(context, "db-drive")
                 .fallbackToDestructiveMigrationOnDowngrade()
 //                .apply { migrations.forEach { addMigrations(it) } }

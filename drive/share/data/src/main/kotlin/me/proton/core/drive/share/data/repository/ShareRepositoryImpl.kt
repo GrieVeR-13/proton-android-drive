@@ -101,26 +101,26 @@ class ShareRepositoryImpl @Inject constructor(
         db.inTransaction {
             dao.insertOrUpdate(response.toShareEntity(shareId.userId))
         }
-        try {
-                response.memberships.firstOrNull()?.let { membershipDto ->
-                db.inTransaction {
-                    val email = getUserEmail(
-                        userId = shareId.userId,
-                        addressId = AddressId(membershipDto.addressId),
-                    )
-                    db.shareMembershipDao.insertOrUpdate(membershipDto.toShareUserMember(shareId, email))
-                }
-            }
-
-        } catch(e: Throwable) {
-            e
-            e
-            e
-            e
-            response
-            response
-            response
-        }
+//        try {
+//                response.memberships.firstOrNull()?.let { membershipDto ->
+//                db.inTransaction {
+//                    val email = getUserEmail(
+//                        userId = shareId.userId,
+//                        addressId = AddressId(membershipDto.addressId),
+//                    )
+//                    db.shareMembershipDao.insertOrUpdate(membershipDto.toShareUserMember(shareId, email))
+//                }
+//            }
+//
+//        } catch(e: Throwable) {
+//            e
+//            e
+//            e
+//            e
+//            response
+//            response
+//            response
+//        }
 
 
     }
