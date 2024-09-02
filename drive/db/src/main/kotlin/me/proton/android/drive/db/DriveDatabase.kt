@@ -61,7 +61,12 @@ import me.proton.core.drive.share.user.data.db.entity.ShareMemberEntity
 import me.proton.core.drive.volume.data.db.VolumeDatabase
 import me.proton.core.drive.volume.data.db.VolumeEntity
 import me.proton.core.key.data.db.KeySaltDatabase
+import me.proton.core.key.data.db.PublicAddressDatabase
 import me.proton.core.key.data.entity.KeySaltEntity
+import me.proton.core.key.data.entity.PublicAddressEntity
+import me.proton.core.key.data.entity.PublicAddressInfoEntity
+import me.proton.core.key.data.entity.PublicAddressKeyDataEntity
+import me.proton.core.key.data.entity.PublicAddressKeyEntity
 import me.proton.core.user.data.db.AddressDatabase
 import me.proton.core.user.data.db.UserConverters
 import me.proton.core.user.data.db.UserDatabase
@@ -83,8 +88,8 @@ import me.proton.core.drive.base.data.db.BaseDatabase as DriveBaseDatabase
         AddressEntity::class,
         AddressKeyEntity::class,
         KeySaltEntity::class,
-//        PublicAddressEntity::class,
-//        PublicAddressKeyEntity::class,
+        PublicAddressEntity::class,
+        PublicAddressKeyEntity::class,
 //        HumanVerificationEntity::class,
 //        UserSettingsEntity::class,
 //        OrganizationEntity::class,
@@ -105,8 +110,8 @@ import me.proton.core.drive.base.data.db.BaseDatabase as DriveBaseDatabase
         ContactEmailLabelEntity::class,
         ContactEntity::class,
 //        RecoveryFileEntity::class,
-//        PublicAddressInfoEntity::class,
-//        PublicAddressKeyDataEntity::class,
+        PublicAddressInfoEntity::class,
+        PublicAddressKeyDataEntity::class,
 //        LabelEntity::class,
         // Drive
         VolumeEntity::class,
@@ -222,7 +227,7 @@ abstract class DriveDatabase :
     ContactDatabase,
     KeySaltDatabase,
 //    HumanVerificationDatabase,
-//    PublicAddressDatabase,
+    PublicAddressDatabase,
 //    UserSettingsDatabase,
 //    LabelDatabase,
 //    OrganizationDatabase,
